@@ -1,0 +1,293 @@
+/* Made By : Yusuf Limited */
+@font-face {
+   font-family: 'FakeR';
+   src: url('../font/fake_receipt.woff2') format('woff2'),
+      url('../font/fake_receipt.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding-top: 56px;
+   font-family: 'FakeR', sans-serif;
+   overflow-x: hidden;
+}
+
+nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 9999999;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   height: 56px;
+   background: #ff0000;
+   transition: 0.3s;
+}
+
+nav.scrolled-down {
+   height: 75px;
+   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.14);
+}
+
+nav.scrolled-down img.logo-lg {
+   scale: 1.15;
+}
+
+nav.scrolled-down img.logo-sm {
+   scale: 1;
+}
+
+.links {
+   display: flex;
+   gap: 20px;
+   text-transform: uppercase;
+}
+
+.links a {
+   cursor: pointer;
+   text-decoration: none;
+   font-weight: bolder !important;
+   color: white;
+}
+
+@media screen and (max-width: 767px) {
+   .logo-sm {
+      width: 250px;
+      height: 45px;
+      transform-origin: 0% 50%;
+      transition: 0.3s;
+      border-radius: 10px;
+      display: block;
+   }
+
+   .logo-lg {
+      display: none;
+   }
+}
+
+@media screen and (min-width: 768px) {
+   .logo-lg {
+      width: 300px;
+      height: 45px;
+      transform-origin: 0% 50%;
+      transition: 0.3s;
+      border-radius: 10px;
+      display: block;
+   }
+
+   .logo-sm {
+      display: none;
+   }
+}
+
+.container {
+   width: 100%;
+   max-width: 80%;
+   margin: 0 auto;
+   box-sizing: border-box;
+}
+
+.flex {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.hamburger {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   padding: 10px;
+   margin-left: auto;
+}
+
+.bar {
+   width: 25px;
+   height: 4px;
+   background-color: #fff;
+   margin: 4px 0;
+   transform: translate(-0.1em, -0.1em);
+   outline: none;
+   box-shadow: 0.05em 0.05em rgba(162, 4, 4, 0.857);
+}
+
+.sidebar {
+   width: 0;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   right: 0;
+   z-index: 9999999999;
+   background-color: #f8f8f8;
+   overflow-x: hidden;
+   transition: 0.3s;
+   padding-top: 60px;
+}
+
+.sidebar.active {
+   width: 250px;
+}
+
+.sidebar a {
+   padding: 15px 15px 5px 30px;
+   text-align: left;
+   text-decoration: none;
+   font-size: 18px;
+   color: #333;
+   display: block;
+   transition: 0.2s;
+   text-transform: uppercase;
+   font-weight: bolder;
+}
+
+.sidebar a:hover {
+   color: #666;
+}
+
+.close-icon {
+   position: absolute;
+   text-align: center;
+   top: 10px;
+   right: 30px;
+   width: 50px;
+   height: 50px;
+   cursor: pointer;
+   background-color: red;
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 40px;
+   font-weight: bolder;
+   transform: translate(-0.1em, -0.1em);
+   outline: none;
+   box-shadow: 0.15em 0.15em rgba(0, 0, 0, 0.857);
+   color: white;
+}
+
+.close-icon:hover {
+   background-color: rgb(40, 170, 40);
+   color: white;
+}
+
+/* carousel */
+.carousel {
+   display: flex;
+   overflow: hidden;
+   position: relative;
+   flex-direction: column;
+   align-items: center;
+}
+
+.carousel-container {
+   display: flex;
+   transition: transform 0.5s ease-in-out;
+   position: relative;
+   width: 100%;
+}
+
+.carousel-item {
+   flex: 0 0 100%;
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   border-radius: 20px;
+}
+
+@media screen and (max-width: 767px) {
+   .carousel-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: fill;
+   }
+}
+
+@media screen and (min-width: 768px) {
+   .carousel-item img {
+      width: 100%;
+      height: 500px;
+      object-fit: fill;
+   }
+}
+
+.carousel-arrow {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 40px;
+   height: 40px;
+   background-color: rgba(0, 0, 0, 0.3);
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+}
+
+.carousel-arrow.left {
+   left: 10px;
+}
+
+.carousel-arrow.right {
+   right: 10px;
+}
+
+.carousel-dots {
+   display: flex;
+   position: absolute;
+   bottom: 30px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.carousel-dot {
+   width: 40px;
+   height: 6px;
+   border-radius: 10px;
+   background-color: rgba(0, 0, 0, 0.318);
+   margin: 0 3px;
+   cursor: pointer;
+   transition: background-color 0.3s ease-in-out;
+}
+
+.carousel-dot.active {
+   background-color: rgb(222, 237, 5);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+   width: 10px;
+}
+
+::-webkit-scrollbar-track {
+   background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: yellow;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background-color: #ff0000;
+}
+
+/* footer */
+footer {
+   background-color: #ff0000;
+   color: white;
+   width: 100%;
+   padding: 20px;
+}
+
+footer span {
+   text-align: center;
+}
